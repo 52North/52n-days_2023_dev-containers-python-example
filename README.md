@@ -1,6 +1,6 @@
 # Vs Code Dev Containers Python Flask example
 This repo contains examples to showcase VS Code Dev Containers extension.
-##Branches
+## Branches
 ### main
 minimal Flask echo service 
 ### store_message
