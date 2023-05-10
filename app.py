@@ -17,7 +17,7 @@ def store(message):
     #connect to database
     conn = psycopg2.connect(database="postgres", user="postgres",
                         password="postgres", host="localhost", port="5432")
-    
+
     #create cursor
     cur = conn.cursor()
     #insert message and commit
