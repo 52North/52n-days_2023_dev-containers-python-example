@@ -4,7 +4,7 @@ This repo contains examples to showcase VS Code Dev Containers extension.
 ### main
 minimal Flask echo service 
 ### store_message
-extended setup to store messages in Postgres database, database is already integrate in the Dev Container setup
+extended setup to store messages in Postgres database, database is already integrated in the Dev Container setup
 ## Run with Dev Containers 
 - start Dev Container
   - clone repository locally
