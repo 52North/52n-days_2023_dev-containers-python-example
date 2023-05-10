@@ -30,7 +30,7 @@ def store(message):
     table_name = 'message'
     message_column = 'message'
     #connect to database
-    conn = psycopg2.connect(database="postgres", user="postgres",
+    conn = psycopg2.connect(database="messages", user="postgres",
                         password="postgres", host="localhost", port="5432")
 
     #create cursor
