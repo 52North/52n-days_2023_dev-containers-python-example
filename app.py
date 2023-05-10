@@ -1,14 +1,29 @@
 from flask import Flask
 import psycopg2
 import os
+from datetime import date
 
 app = Flask(__name__)
 
+APP_TITLE="52N Days 2023 - breakout session - devcontainer"
 
+APP_HEADER=f"""
+        <html>
+            <head>
+                <title>{APP_TITLE}</title>
+            </head>
+            <body>
+                <h1>{APP_TITLE}</h1>"""
+
+APP_FOOTER=f"""
+            <hr />
+            ©2023 - {date.today().strftime("%Y")} 52°North Spatial Information Research GmbH
+            </body>
+       </html>"""
 
 @app.route('/echo/<message>')
 def echo(message):
-    return 'Your message was: ' + str(message)
+    return f"{APP_HEADER}\nYour message was: <tt>{str(message)}</tt>\n{APP_FOOTER}"
 
 @app.route('/store/<message>')
 def store(message):
@@ -24,15 +39,15 @@ def store(message):
     cur.execute('INSERT INTO ' + table_name + ' (message) VALUES(%s)', (message,))
     conn.commit()
 
-    output = 'stored messages:' + '<br />\n'
+    output = 'stored messages:' + '<ol>\n'
     #select all stored messages
     cur.execute('SELECT ' + message_column + ' FROM ' + table_name)
     messages = cur.fetchall()
     for row in messages:
-        output = output + row[0] + '<br />\n'
+        output = output + '<li>' + row[0] + '</li>\n'
 
     #close resources
     cur.close()
     conn.close()
 
-    return output
+    return f"{APP_HEADER}{output}</ol>{APP_FOOTER}"
