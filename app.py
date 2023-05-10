@@ -24,12 +24,12 @@ def store(message):
     cur.execute('INSERT INTO ' + table_name + ' (message) VALUES(%s)', (message,))
     conn.commit()
 
-    output = 'stored messages:' + '\n'
+    output = 'stored messages:' + '<br />\n'
     #select all stored messages
     cur.execute('SELECT ' + message_column + ' FROM ' + table_name)
     messages = cur.fetchall()
     for row in messages:
-        output = output + row[0] + '\n'
+        output = output + row[0] + '<br />\n'
 
     #close resources
     cur.close()
